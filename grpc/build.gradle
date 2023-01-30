@@ -4,6 +4,7 @@ buildscript {
         protobufPluginVersion = '0.9.1'
         grpcVersion = '1.42.1'
         springBootPluginVersion = '2.6.4'
+        springDepedencyPluginVersion = '1.1.0'
         springBootGrpcVersion = '2.13.1.RELEASE'
         grpcGenVersion = '1.52.1'
         allureGrpcVersion = '2.20.1'
@@ -13,6 +14,7 @@ buildscript {
 
 plugins {
     id 'com.google.protobuf' version "$protobufPluginVersion"
+    id 'io.spring.dependency-management' version "$springDepedencyPluginVersion"
     id 'org.springframework.boot' version "$springBootPluginVersion"
 }
 
