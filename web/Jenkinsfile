@@ -11,7 +11,7 @@ pipeline {
                         powershell 'docker pull selenoid/chrome:109.0'
                         powershell 'docker pull selenoid/firefox:109.0'
                         powershell 'docker pull browsers/edge:109.0'
-                        powershell 'docker-compose -f web\\src\\test\\resources\\selenoid\\docker-compose.yml up'
+                        powershell 'docker-compose -f web\\src\\test\\resources\\selenoid\\docker-compose.yml up -d'
                         bat 'curl http://localhost:4444/status'
                          }
             }
