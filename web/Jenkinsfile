@@ -25,8 +25,7 @@ pipeline {
       post {
              always {
                  script {
-                     powershell 'docker stop selenoid'
-                     powershell 'docker rm selenoid'
+                     powershell 'docker-compose down'
                      allure([
                          includeProperties: false,
                          jdk: '',
