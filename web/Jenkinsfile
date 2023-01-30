@@ -25,13 +25,13 @@ pipeline {
       post {
              always {
                  script {
-                     powershell 'docker-compose -f web\\src\\test\\resources\\selenoid\\docker-compose.yml down -d'
+                     powershell 'docker-compose -f web\\src\\test\\resources\\selenoid\\docker-compose.yml down'
                      allure([
                          includeProperties: false,
                          jdk: '',
                          properties: [],
                          reportBuildPolicy: 'ALWAYS',
-                         results: [[path: 'allure-results']]
+                         results: [[path: 'web/allure-results']]
                          ])
                  }
              }
