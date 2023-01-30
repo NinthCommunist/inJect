@@ -1,0 +1,41 @@
+pipeline {
+    agent any
+    parameters {
+        string(name: 'testXml', defaultValue: 'regress', description: 'enter xml file')
+        string(name: 'thread', defaultValue: '1', description: 'thread count')
+        choice(name: 'browser', choices: ['chrome', 'firefox', 'edge'], description: 'choice browser')
+    }
+     stages {
+            stage('start Selenoid') {
+                steps {
+                        powershell 'docker pull selenoid/chrome:109.0'
+                        powershell 'docker pull selenoid/firefox:109.0'
+                        powershell 'docker pull browsers/edge:109.0'
+                        powershell 'docker-compose -f ./src/test/resources/selenoid/docker-compose.yml up'
+                        bat 'curl http://localhost:4444/status'
+                         }
+            }
+            stage('test') {
+                        steps {
+                                bat "../gradlew :web:clean"
+                                bat "../gradlew :web:testByXml -Premote=true -PtestXml=${params.testXml} -Pthread=${params.thread} -Pbrowser=${params.browser}"
+                        }
+            }
+     }
+      post {
+             always {
+                 script {
+                     powershell 'docker stop selenoid'
+                     powershell 'docker rm selenoid'
+                     allure([
+                         includeProperties: false,
+                         jdk: '',
+                         properties: [],
+                         reportBuildPolicy: 'ALWAYS',
+                         results: [[path: 'allure-results']]
+                         ])
+                 }
+             }
+         }
+
+}
