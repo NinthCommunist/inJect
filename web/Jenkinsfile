@@ -25,7 +25,7 @@ pipeline {
       post {
              always {
                  script {
-                     powershell 'docker-compose down'
+                     powershell 'docker-compose -f web\\src\\test\\resources\\selenoid\\docker-compose.yml down -d'
                      allure([
                          includeProperties: false,
                          jdk: '',
