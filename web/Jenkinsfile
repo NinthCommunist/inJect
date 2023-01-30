@@ -11,15 +11,14 @@ pipeline {
                         powershell 'docker pull selenoid/chrome:109.0'
                         powershell 'docker pull selenoid/firefox:109.0'
                         powershell 'docker pull browsers/edge:109.0'
-                        powershell 'ls'
-                        powershell 'docker-compose -f ./src/test/resources/selenoid/docker-compose.yml up'
+                        powershell 'docker-compose -f web\\src\\test\\resources\\selenoid\\docker-compose.yml up'
                         bat 'curl http://localhost:4444/status'
                          }
             }
             stage('test') {
                         steps {
-                                bat "../gradlew :web:clean"
-                                bat "../gradlew :web:testByXml -Premote=true -PtestXml=${params.testXml} -Pthread=${params.thread} -Pbrowser=${params.browser}"
+                                bat "./gradlew :web:clean"
+                                bat "./gradlew :web:testByXml -Premote=true -PtestXml=${params.testXml} -Pthread=${params.thread} -Pbrowser=${params.browser}"
                         }
             }
      }
