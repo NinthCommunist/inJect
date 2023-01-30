@@ -1,0 +1,28 @@
+dependencies {
+    implementation restassured
+    implementation config
+    implementation jackson
+    testImplementation assertJ
+}
+
+tasks.withType(Test){
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+        exceptionFormat = 'full'
+    }
+
+
+}
+
+task allApi(type:Test){
+    scanForTestClasses=false
+    useTestNG{
+        exclude "./src/test/java/tests"
+        suites "./src/test/resources/testngxmls/allApi.xml"
+    }
+}
+
+
+repositories {
+    mavenCentral()
+}

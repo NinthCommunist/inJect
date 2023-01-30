@@ -1,0 +1,5 @@
+rootProject.name = 'inJect'
+include 'web'
+include 'api'
+include 'grpc'
+

@@ -1,0 +1,11 @@
+spring:
+  main:
+    lazy-initialization: true
+
+web:
+  base_url: https://bonigarcia.dev/selenium-webdriver-java/
+  timeout: 30
+  browser_name: chrome
+  selenoid_url: http://localhost:4444/wd/hub
+  remote: false
+

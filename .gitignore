@@ -1,0 +1,15 @@
+# Project exclude paths
+/.gradle/
+/api/build/
+/api/build/classes/java/main/
+/api/build/classes/java/test/
+/grpc/build/
+/grpc/build/classes/java/main/
+/grpc/build/classes/java/test/
+/web/build/
+/web/build/classes/java/main/
+/web/build/classes/java/test/
+/.idea
+/api/allure-result/
+/web/allure-result/
+/grpc/allure-result/

@@ -1,0 +1,63 @@
+buildscript {
+
+    ext.spring = "org.springframework.boot:spring-boot-starter:$springVersion"
+    ext.springTest = "org.springframework:spring-test:$springTestVersion"
+    ext.aspectj = "org.aspectj:aspectjweaver:$aspectJVersion"
+    ext.lombok = "org.projectlombok:lombok:$lombokVersion"
+    ext.selenium = "org.seleniumhq.selenium:selenium-java:$seleniumVersion"
+    ext.driverManager = "io.github.bonigarcia:webdrivermanager:$driverManagerVersion"
+    ext.testNg = "org.testng:testng:$testNgVersion"
+    ext.datafaker = "net.datafaker:datafaker:$datafakerVersion"
+    ext.allureCommandLine = "io.qameta.allure:allure-commandline:$allureCommandLineVersion"
+    ext.ashot = "ru.yandex.qatools.ashot:ashot:$aShotVersion"
+    ext.restassured = "io.rest-assured:rest-assured:$restassuredVersion"
+    ext.config = "org.aeonbits.owner:owner:$ownerVersion"
+    ext.jackson = "com.fasterxml.jackson.core:jackson-core:$jacksonVersion"
+    ext.assertJ = "org.assertj:assertj-core:$assertJVersion"
+
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+
+    dependencies {
+        classpath "io.qameta.allure.gradle.allure:allure-plugin:${allureVersion}"
+    }
+
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'java-library'
+    apply plugin: 'io.qameta.allure'
+
+
+    tasks.withType(JavaCompile) {
+        sourceCompatibility = JavaVersion.VERSION_11.toString()
+        targetCompatibility = JavaVersion.VERSION_11.toString()
+        options.encoding = "UTF-8"
+    }
+
+    dependencies {
+        compileOnly lombok
+        annotationProcessor lombok
+        implementation(testNg,
+                datafaker, allureCommandLine)
+    }
+
+}
+
+
+group = "org.inject"
+version = "1.0"
+
+repositories {
+    mavenCentral()
+}
+
+
+
+

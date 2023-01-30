@@ -1,0 +1,69 @@
+buildscript {
+    ext{
+        protobufArtifactVersion = '3.21.6'
+        protobufPluginVersion = '0.9.1'
+        grpcVersion = '1.42.1'
+        springBootPluginVersion = '2.6.4'
+        springBootGrpcVersion = '2.13.1.RELEASE'
+        grpcGenVersion = '1.52.1'
+        allureGrpcVersion = '2.20.1'
+    }
+
+}
+
+plugins {
+    id 'com.google.protobuf' version "$protobufPluginVersion"
+    id 'org.springframework.boot' version "$springBootPluginVersion"
+}
+
+dependencies {
+    implementation "net.devh:grpc-spring-boot-starter:${springBootGrpcVersion}"
+    implementation springTest
+    testImplementation "io.qameta.allure:allure-grpc:${allureGrpcVersion}"
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:${protobufArtifactVersion}"
+    }
+
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:${grpcGenVersion}"
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+    }
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+
+test {
+    useTestNG()
+}
+
+
+
+task copeDependencies(type:Copy){
+    from(configurations.runtimeClasspath.files)
+    into("$buildDir/libs/lib")
+}
+
+jar.dependsOn copeDependencies
+
+jar{
+    def jars = configurations.runtimeClasspath.files.collect{"lib/$it.name"}
+    manifest{
+        attributes 'Main-Class':'org.inject.PictureApplication',
+                    'Class-Path':jars.join(' ')
+    }
+    archiveFileName.set("org.inject.grpc.jar")
+}
+

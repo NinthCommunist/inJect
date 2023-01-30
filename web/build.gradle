@@ -1,0 +1,46 @@
+dependencies {
+    implementation driverManager
+    implementation selenium
+    implementation ashot
+    implementation springTest
+    implementation spring
+
+}
+
+tasks.withType(Test){
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+        exceptionFormat = 'full'
+    }
+
+    if(project.hasProperty('remote')){
+        systemProperty 'web.remote', "$remote"
+    }
+
+    if(project.hasProperty('browser')){
+        systemProperty 'web.browser_name', "$browser"
+    }
+
+}
+
+task regressTest(type:Test){
+    useTestNG() {
+        suites "./src/test/resources/testngxmls/regress.xml"
+    }
+}
+
+task testByXml(type:Test){
+    def testXml
+
+    if (!project.hasProperty('testXml')) {
+        testXml = "regress"
+    }
+
+    useTestNG() {
+        suites "./src/test/resources/testngxmls/" + testXml +".xml"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
