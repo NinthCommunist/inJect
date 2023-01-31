@@ -35,8 +35,7 @@ pipeline {
                                  reportBuildPolicy: 'ALWAYS',
                                  results: [[path: 'grpc/build/allure-results']]
                                  ])
-                         }
-                     }
-                 }
-    }
+               }
+            }
+        }
 }
