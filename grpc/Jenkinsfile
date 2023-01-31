@@ -6,10 +6,10 @@ pipeline {
                     powershell './gradlew :grpc:clean'
                     powershell './gradlew :grpc:jar'
                 }
-
             }
             stage('start GRPC Service') {
                 steps {
+                    powershell 'docker build -t grpc-service .'
                     dir("grpc"){
                         powershell 'docker build -t grpc-service .'
                         powershell 'docker run -d -p 9090:9090 grpc-service'
