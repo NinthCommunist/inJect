@@ -15,8 +15,8 @@ pipeline {
             }
             stage('test') {
                         steps {
-                                powershell "./gradlew :grpc:clean"
-                                powershell "./gradlew :grpc:test"
+                                bat "./gradlew :grpc:clean"
+                                bat "./gradlew :grpc:test"
                         }
             }
         }
