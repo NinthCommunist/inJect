@@ -20,6 +20,7 @@ task allApi(type:Test){
         exclude "./src/test/java/tests"
         suites "./src/test/resources/testngxmls/allApi.xml"
     }
+    useDefaultListeners = true
 }
 
 
