@@ -4,6 +4,7 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
+import io.qameta.allure.testng.TestInstanceParameter;
 import org.assertj.core.api.SoftAssertions;
 import org.inject.api.models.requests.CredentialsPojo;
 import org.inject.api.models.requests.UserPojo;
@@ -17,6 +18,7 @@ import java.util.Map;
 @Epic("Тест пользователей")
 public class UserTest {
 
+    @TestInstanceParameter("role")
     private UserPojo userPojo;
     private CredentialsPojo credentialsPojo;
     private UserSteps userSteps;
