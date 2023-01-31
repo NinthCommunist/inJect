@@ -3,7 +3,8 @@ pipeline {
         stages {
             stage('jar') {
                 steps {
-                    powershell './gradlew :grpc:jar'
+                    bat './gradlew :grpc:clean'
+                    bat './gradlew :grpc:jar'
                 }
             }
             stage('start GRPC Service') {
