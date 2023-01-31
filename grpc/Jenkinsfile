@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+        stages {
+            stage('jar') {
+                steps {
+                    powershell './gradlew :grpc:clean'
+                    powershell './gradlew :grpc:jar'
+                    }
+                }
+            }
+            stage('start GRPC Service') {
+                steps {
+                    dir("grpc"){
+                        powershell 'docker build -t grpc-service .'
+                        powershell 'docker run -d -p 9090:9090 grpc-service'
+                                }
+                    }
+            }
+            stage('test') {
+                        steps {
+                                powershell "./gradlew :grpc:clean"
+                                powershell "./gradlew :grpc:test"
+                        }
+            }
+        }
+        post {
+            always {
+                script {
+                    powershell 'docker stop grpc-service'
+                    powershell 'docker rm grpc-service'
+                        allure([
+                                 includeProperties: false,
+                                 jdk: '',
+                                 properties: [],
+                                 reportBuildPolicy: 'ALWAYS',
+                                 results: [[path: 'grpc/build/allure-results']]
+                                 ])
+                         }
+                     }
+                 }
+    }
+}
