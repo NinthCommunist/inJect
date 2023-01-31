@@ -11,6 +11,7 @@ buildscript {
     ext.allureCommandLine = "io.qameta.allure:allure-commandline:$allureCommandLineVersion"
     ext.ashot = "ru.yandex.qatools.ashot:ashot:$aShotVersion"
     ext.restassured = "io.rest-assured:rest-assured:$restassuredVersion"
+    ext.allureRestassured = "io.qameta.allure:allure-rest-assured:$allureRestasuredVersion"
     ext.config = "org.aeonbits.owner:owner:$ownerVersion"
     ext.jackson = "com.fasterxml.jackson.core:jackson-core:$jacksonVersion"
     ext.assertJ = "org.assertj:assertj-core:$assertJVersion"

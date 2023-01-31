@@ -1,5 +1,6 @@
 package org.inject.api.sender;
 
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
@@ -61,6 +62,7 @@ public class ApiSender {
 
         return new ResponseWrapper(given(requestSpecBuilder.build()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter()))
+                .filter(new AllureRestAssured())
                 .filter(new CheckResponseTimeFilter(TimeConstants.EXPECTED_RESPONSE_TIME))
                 .when()
                 .request(method)

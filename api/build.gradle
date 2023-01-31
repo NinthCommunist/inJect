@@ -1,5 +1,6 @@
 dependencies {
     implementation restassured
+    implementation allureRestassured
     implementation config
     implementation jackson
     testImplementation assertJ
