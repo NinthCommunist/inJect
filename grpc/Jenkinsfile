@@ -10,7 +10,7 @@ pipeline {
             stage('start GRPC Service') {
                 steps {
                         powershell 'docker build -t grpc-service ./grpc'
-                        powershell 'docker run -d -p 9090:9090 grpc-service'
+                        powershell 'docker run -d -p 9090:9090 --name grpc-service grpc-service'
                 }
             }
             stage('test') {
