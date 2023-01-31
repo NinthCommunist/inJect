@@ -19,8 +19,10 @@ task allApi(type:Test){
     useTestNG{
         exclude "./src/test/java/tests"
         suites "./src/test/resources/testngxmls/allApi.xml"
+        useDefaultListeners = true
     }
-    useDefaultListeners = true
+    reports.html.enabled = false
+
 }
 
 
