@@ -5,15 +5,15 @@ pipeline {
                 steps {
                     powershell './gradlew :grpc:clean'
                     powershell './gradlew :grpc:jar'
-                    }
                 }
+
             }
             stage('start GRPC Service') {
                 steps {
                     dir("grpc"){
                         powershell 'docker build -t grpc-service .'
                         powershell 'docker run -d -p 9090:9090 grpc-service'
-                                }
+                        }
                     }
             }
             stage('test') {
