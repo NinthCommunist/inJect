@@ -5,6 +5,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import io.qameta.allure.testng.TestInstanceParameter;
+import io.restassured.http.Cookie;
 import org.assertj.core.api.SoftAssertions;
 import org.inject.api.models.requests.CredentialsPojo;
 import org.inject.api.models.requests.UserPojo;
@@ -13,6 +14,8 @@ import org.inject.api.sender.ResponseWrapper;
 import org.inject.api.steps.UserSteps;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Epic("Тест пользователей")
