@@ -24,7 +24,7 @@ import static io.restassured.RestAssured.given;
  */
 @Setter
 @Accessors(fluent = true)
-public class ApiSender {
+public class ApiRequest {
 
     private Method method;
     private String path;
@@ -36,22 +36,9 @@ public class ApiSender {
 
     private RequestSpecBuilder requestSpecBuilder;
 
-    /**
-     * Используется только  в BaseStep
-     */
-    public ApiSender() {
-        headers = new HashMap<>();
-        cookies = new ArrayList<>();
-    }
-
-    /**
-     * Используется в конкретном шаге
-     *
-     * @param apiSender сендер, чьи параметры нам нужно использовать в новом запросе
-     */
-    public ApiSender(ApiSender apiSender) {
-        this.headers = apiSender.headers;
-        this.cookies = apiSender.cookies;
+    public ApiRequest(StableRequestData stableRequestData) {
+        this.headers = stableRequestData.getHeaders();
+        this.cookies = stableRequestData.getCookies();
         this.requestSpecBuilder = new RequestSpecBuilder();
     }
 
@@ -67,16 +54,6 @@ public class ApiSender {
                 .when()
                 .request(method)
                 .andReturn());
-    }
-
-    public ApiSender addHeaders(Map<String, String> headers) {
-        this.headers.putAll(headers);
-        return this;
-    }
-
-    public ApiSender addCookies(List<Cookie> cookies) {
-        this.cookies.addAll(cookies);
-        return this;
     }
 
     private void buildUrl() {
