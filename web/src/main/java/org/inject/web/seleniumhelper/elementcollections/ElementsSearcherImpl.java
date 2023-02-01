@@ -13,7 +13,7 @@ import java.time.Duration;
 
 @Component
 @Scope("threadlocal")
-public class ElementsSearcherIml implements ElementSearcher {
+public class ElementsSearcherImpl implements ElementSearcher {
 
     @Autowired
     private PageHolder pageHolder;
