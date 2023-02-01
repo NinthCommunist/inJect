@@ -1,6 +1,6 @@
 package org.inject.web.actions;
 
-import org.inject.web.seleniumhelper.elementcollections.ElementsSearcher;
+import org.inject.web.seleniumhelper.elementcollections.interfaces.ElementSearcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -12,7 +12,7 @@ import java.util.Optional;
 public class GetterElementInfoAction {
 
     @Autowired
-    ElementsSearcher elementsSearcher;
+    ElementSearcher elementsSearcher;
 
     public String getElementText(String elementName){
         return elementsSearcher.findWebElement(elementName)

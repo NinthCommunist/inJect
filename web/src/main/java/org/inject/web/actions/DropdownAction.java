@@ -1,6 +1,6 @@
 package org.inject.web.actions;
 
-import org.inject.web.seleniumhelper.elementcollections.ElementsSearcher;
+import org.inject.web.seleniumhelper.elementcollections.interfaces.ElementSearcher;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class DropdownAction {
 
     @Autowired
-    ElementsSearcher elementsSearcher;
+    ElementSearcher elementsSearcher;
 
     public void selectDropdownOption(String dropdownName, String optionText) {
         Select select = new Select(elementsSearcher.findWebElement(dropdownName));

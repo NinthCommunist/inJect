@@ -1,5 +1,6 @@
 package org.inject.web.seleniumhelper.elementcollections;
 
+import org.inject.web.seleniumhelper.elementcollections.interfaces.ElementSearcher;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -12,7 +13,7 @@ import java.time.Duration;
 
 @Component
 @Scope("threadlocal")
-public class ElementsSearcher {
+public class ElementsSearcherIml implements ElementSearcher {
 
     @Autowired
     private PageHolder pageHolder;

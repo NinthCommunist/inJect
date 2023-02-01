@@ -1,6 +1,6 @@
 package org.inject.web.actions;
 
-import org.inject.web.seleniumhelper.elementcollections.ElementsSearcher;
+import org.inject.web.seleniumhelper.elementcollections.interfaces.ElementSearcher;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -16,7 +16,7 @@ import java.time.Duration;
 public class WaiterAction {
 
     @Autowired
-    ElementsSearcher elementsSearcher;
+    ElementSearcher elementsSearcher;
 
     @Autowired
     WebDriver driver;

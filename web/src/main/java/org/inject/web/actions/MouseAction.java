@@ -1,6 +1,6 @@
 package org.inject.web.actions;
 
-import org.inject.web.seleniumhelper.elementcollections.ElementsSearcher;
+import org.inject.web.seleniumhelper.elementcollections.interfaces.ElementSearcher;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class MouseAction {
 
     @Autowired
-    private ElementsSearcher elementsSearcher;
+    private ElementSearcher elementsSearcher;
 
     @Autowired
     WebDriver driver;
