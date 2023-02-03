@@ -1,10 +1,6 @@
 dependencies {
-    implementation driverManager
-    implementation selenium
-    implementation ashot
-    implementation springTest
-    implementation spring
-
+    implementation(driverManager, selenium,
+            ashot, springTest, spring)
 }
 
 tasks.withType(Test) {
