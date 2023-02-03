@@ -2,6 +2,7 @@ buildscript {
 
     ext.spring = "org.springframework.boot:spring-boot-starter:$springVersion"
     ext.springTest = "org.springframework:spring-test:$springTestVersion"
+    ext.springJDBC = "org.springframework:spring-jdbc:$springJDBCVersion"
     ext.aspectj = "org.aspectj:aspectjweaver:$aspectJVersion"
     ext.lombok = "org.projectlombok:lombok:$lombokVersion"
     ext.selenium = "org.seleniumhq.selenium:selenium-java:$seleniumVersion"
@@ -15,6 +16,7 @@ buildscript {
     ext.config = "org.aeonbits.owner:owner:$ownerVersion"
     ext.jackson = "com.fasterxml.jackson.core:jackson-core:$jacksonVersion"
     ext.assertJ = "org.assertj:assertj-core:$assertJVersion"
+    ext.postgresql = "org.postgresql:postgresql:$postgresqlVersion"
 
     repositories {
         mavenCentral()

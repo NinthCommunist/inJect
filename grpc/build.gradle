@@ -19,9 +19,14 @@ plugins {
 }
 
 dependencies {
+    implementation lombok
+    testAnnotationProcessor lombok
     implementation "net.devh:grpc-spring-boot-starter:${springBootGrpcVersion}"
     implementation springTest
     testImplementation "io.qameta.allure:allure-grpc:${allureGrpcVersion}"
+    implementation springJDBC
+    testImplementation assertJ
+    implementation postgresql
 }
 
 protobuf {

@@ -1,13 +1,11 @@
-package org.inject.storage;
+package grpc.storage;
 
 import lombok.Getter;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
 
 @Getter
-@Component
 public class ArtistStorage {
 
     private List<String> PerovPictures =
@@ -33,15 +31,16 @@ public class ArtistStorage {
                     "Иван-царевич на Сером Волке");
 
     private List<String> SurikovPictures =
-            List.of("Боярыня Морозова", "Витязь на распутье", "Взятие снежного городка",
+            List.of("Боярыня Морозова", "Пир Валтасара", "Взятие снежного городка",
                     "Вид памятника Петру I на Сенатской площади в Петербурге", "Вид на Кремль");
 
     private Map<String, List<String>> artistPictures =
-            Map.of("Перов", PerovPictures,
-                    "Шишкин", ShishkinPictures,
-                    "Айвазовский", AivazovskyPictures,
-                    "Брюлов", BrulovPictures,
-                    "Репин", RepinPictures,
-                    "Васнецов", VasnetsovPictures,
-                    "Суриков", SurikovPictures);
+            Map.of("Василий Перов", PerovPictures,
+                    "Иван Шишкин", ShishkinPictures,
+                    "Иван Айвазовский", AivazovskyPictures,
+                    "Карл Брюлов", BrulovPictures,
+                    "Илья Репин", RepinPictures,
+                    "Виктор Васнецов", VasnetsovPictures,
+                    "Василий Суриков", SurikovPictures);
+
 }

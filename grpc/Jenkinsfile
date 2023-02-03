@@ -9,8 +9,7 @@ pipeline {
             }
             stage('start GRPC Service') {
                 steps {
-                        powershell 'docker build -t grpc-service ./grpc'
-                        powershell 'docker run -d -p 9090:9090 --name grpc-service grpc-service'
+                        powershell 'docker-compose -f grpc\\docker-compose.yml up -d'
                 }
             }
             stage('test') {
@@ -23,8 +22,8 @@ pipeline {
         post {
             always {
                 script {
-                    powershell 'docker stop grpc-service'
-                    powershell 'docker rm grpc-service'
+                    powershell 'docker-compose -f grpc\\docker-compose.yml down --volumes'
+                    powershell 'docker rmi grpc_app'
                         allure([
                                  includeProperties: false,
                                  jdk: '',
