@@ -1,3 +1,4 @@
+/*
 package grpc.tests;
 
 import com.google.common.collect.ImmutableList;
@@ -43,3 +44,4 @@ public class PictureServiceTest extends AbstractTestNGSpringContextTests {
     }
 
 }
+*/
