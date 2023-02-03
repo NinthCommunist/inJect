@@ -1,7 +1,6 @@
 package grpc.storage;
 
 import lombok.Getter;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
@@ -43,4 +42,5 @@ public class ArtistStorage {
                     "Илья Репин", RepinPictures,
                     "Виктор Васнецов", VasnetsovPictures,
                     "Василий Суриков", SurikovPictures);
+
 }

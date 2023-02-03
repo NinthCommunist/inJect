@@ -7,20 +7,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 
 @Repository
 public class PictureRepository {
-    private final String PICTURES_BY_ARTIST = "SELECT p.name, CONCAT_WS(' ', a.first_name, a.last_name) artist " +
-            "FROM pictures p JOIN artist a " +
-            "ON p.artist_id = a.id " +
-            "WHERE CONCAT_WS(' ', a.first_name, a.last_name) = ?";
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -30,6 +23,11 @@ public class PictureRepository {
     public PictureRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+
+    private final String PICTURES_BY_ARTIST = "SELECT p.name, CONCAT_WS(' ', a.first_name, a.last_name) artist " +
+            "FROM pictures p JOIN artist a " +
+            "ON p.artist_id = a.id " +
+            "WHERE CONCAT_WS(' ', a.first_name, a.last_name) = ?";
 
     public List<PictureDTO> getPicturesByArtist(String artist) {
         LOGGER.info("Поиск картин художника " + artist);

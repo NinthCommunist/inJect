@@ -22,12 +22,12 @@ public class DBConfig {
     private String DBPassword;
 
     @Bean
-    public DataSource dataSource(){
+    public DataSource dataSource() {
         return new DriverManagerDataSource(DBUrl, DBUser, DBPassword);
     }
 
     @Bean
-    public JdbcTemplate jdbcTemplate(){
+    public JdbcTemplate jdbcTemplate() {
         return new JdbcTemplate(dataSource());
     }
 

@@ -25,11 +25,11 @@ public class ArtistRepository {
     private final String ARTIST_BY_PICTURE = "SELECT a.first_name firstName, a.last_name lastName FROM artist a " +
             "JOIN pictures p ON a.id = p.artist_id " +
             "WHERE p.name = ?";
+
     public String getArtistByPicture(String pictureName) {
         LOGGER.info("Поиск художника по картине " + pictureName);
-        ArtistDTO artistDTO =  jdbcTemplate.queryForObject(ARTIST_BY_PICTURE, new BeanPropertyRowMapper<>(ArtistDTO.class), pictureName);
-        return Objects.requireNonNull(artistDTO).getFirstName()+" "+artistDTO.getLastName();
+        ArtistDTO artistDTO = jdbcTemplate.queryForObject(ARTIST_BY_PICTURE, new BeanPropertyRowMapper<>(ArtistDTO.class), pictureName);
+        return Objects.requireNonNull(artistDTO).getFirstName() + " " + artistDTO.getLastName();
     }
-
 
 }

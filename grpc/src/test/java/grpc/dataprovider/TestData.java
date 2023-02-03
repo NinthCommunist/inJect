@@ -1,4 +1,3 @@
-/*
 package grpc.dataprovider;
 
 import grpc.storage.ArtistStorage;
@@ -12,29 +11,28 @@ import java.util.stream.Collectors;
 
 public class TestData {
 
-    ArtistStorage storage = new ArtistStorage();
-    Faker faker = new Faker();
+    private ArtistStorage storage = new ArtistStorage();
+    private Faker faker = new Faker();
 
 
     @DataProvider(name = "getPictures")
-    public Iterator<Object[]> forGetPictures(){
+    public Iterator<Object[]> forGetPictures() {
         Map<String, List<String>> artistPictures = storage.getArtistPictures();
         return artistPictures.entrySet()
                 .stream()
-                .map(entry->new Object[]{entry.getKey(), entry.getValue()})
+                .map(entry -> new Object[]{entry.getKey(), entry.getValue()})
                 .collect(Collectors.toList()).iterator();
     }
 
     @DataProvider(name = "getArtist")
-    public Iterator<Object[]> forGetArtist(){
+    public Iterator<Object[]> forGetArtist() {
         Map<String, List<String>> artistPictures = storage.getArtistPictures();
         return artistPictures.entrySet()
                 .stream()
-                .map(entry->new Object[]{
+                .map(entry -> new Object[]{
                         entry.getKey(),
                         faker.options().nextElement(entry.getValue()),
                         entry.getValue()})
                 .collect(Collectors.toList()).iterator();
     }
 }
-*/
