@@ -20,8 +20,12 @@ import java.util.Map;
 @EnableConfigurationProperties(WebProperties.class)
 public class WebDriverFactory {
 
+    private final WebProperties webProperties;
+
     @Autowired
-    WebProperties webProperties;
+    public WebDriverFactory(WebProperties webProperties) {
+        this.webProperties = webProperties;
+    }
 
     @Bean
     @Scope("threadlocal")

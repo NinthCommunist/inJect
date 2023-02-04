@@ -17,8 +17,12 @@ import java.io.ByteArrayOutputStream;
 @Scope("threadlocal")
 public class ScreenshotMaker {
 
+    private final WebDriver driver;
+
     @Autowired
-    private WebDriver driver;
+    public ScreenshotMaker(WebDriver driver) {
+        this.driver = driver;
+    }
 
     @Attachment(value = "screenshot", type = "image/png")
     @SneakyThrows

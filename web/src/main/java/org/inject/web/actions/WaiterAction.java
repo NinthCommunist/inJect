@@ -15,11 +15,15 @@ import java.time.Duration;
 @Scope("threadlocal")
 public class WaiterAction {
 
-    @Autowired
-    ElementSearcher elementsSearcher;
+    private final ElementSearcher elementsSearcher;
+
+    private final WebDriver driver;
 
     @Autowired
-    WebDriver driver;
+    public WaiterAction(ElementSearcher elementsSearcher, WebDriver driver) {
+        this.elementsSearcher = elementsSearcher;
+        this.driver = driver;
+    }
 
     public void waitElementText(String elementName, String text, int waitSecond) {
         WebElement element = elementsSearcher.findWebElement(elementName);

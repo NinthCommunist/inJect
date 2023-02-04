@@ -9,8 +9,12 @@ import org.springframework.stereotype.Component;
 @Scope("threadlocal")
 public class FileAction {
 
+    private final ElementSearcher elementsSearcher;
+
     @Autowired
-    ElementSearcher elementsSearcher;
+    public FileAction(ElementSearcher elementsSearcher) {
+        this.elementsSearcher = elementsSearcher;
+    }
 
     public void uploadFile(String inputName, String filePath){
         elementsSearcher.findWebElement(inputName).sendKeys(filePath);

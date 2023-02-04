@@ -9,8 +9,12 @@ import org.springframework.stereotype.Component;
 @Scope("threadlocal")
 public class ButtonAction {
 
+    private final ElementSearcher elementsSearcher;
+
     @Autowired
-    ElementSearcher elementsSearcher;
+    public ButtonAction(ElementSearcher elementsSearcher) {
+        this.elementsSearcher = elementsSearcher;
+    }
 
     public void clickOnButton(String name){
         elementsSearcher.findClickableElement(name).click();

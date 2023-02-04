@@ -10,8 +10,12 @@ import java.util.Iterator;
 @Component
 public class GrpcSteps {
 
+    private final PicturesServiceGrpc.PicturesServiceBlockingStub stub;
+
     @Autowired
-    private PicturesServiceGrpc.PicturesServiceBlockingStub stub;
+    public GrpcSteps(PicturesServiceGrpc.PicturesServiceBlockingStub stub) {
+        this.stub = stub;
+    }
 
     @Step("Отправка запроса GetArtist по картине {picture}")
     public ArtistResponse getArtistByPicture(String picture) {

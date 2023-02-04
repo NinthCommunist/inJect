@@ -9,8 +9,12 @@ import org.springframework.stereotype.Component;
 @Scope("threadlocal")
 public class AlertAction {
 
+    private final WebDriver driver;
+
     @Autowired
-    WebDriver driver;
+    public AlertAction(WebDriver driver) {
+        this.driver = driver;
+    }
 
     public void acceptAlert() {
         driver.switchTo().alert()

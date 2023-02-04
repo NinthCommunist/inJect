@@ -12,8 +12,8 @@ import java.nio.file.FileSystems;
 import java.util.List;
 
 public class TestFactories {
-    ObjectMapper objectMapper = new ObjectMapper();
-    File directory = FileSystems.getDefault().getPath("src/main/resources/testdata").toAbsolutePath().toFile();
+    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final File directory = FileSystems.getDefault().getPath("src/main/resources/testdata").toAbsolutePath().toFile();
 
     @Factory
     public Object[] userTestFactory() throws IOException {

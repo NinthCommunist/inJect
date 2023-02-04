@@ -9,8 +9,12 @@ import org.springframework.stereotype.Component;
 @Scope("threadlocal")
 public class FieldAction {
 
+    private final ElementSearcher elementsSearcher;
+
     @Autowired
-    ElementSearcher elementsSearcher;
+    public FieldAction(ElementSearcher elementsSearcher) {
+        this.elementsSearcher = elementsSearcher;
+    }
 
     public void fillInput(String inputName, String text){
         elementsSearcher.findClickableElement(inputName).sendKeys(text);

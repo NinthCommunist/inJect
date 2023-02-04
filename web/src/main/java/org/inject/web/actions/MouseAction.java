@@ -12,11 +12,14 @@ import org.springframework.stereotype.Component;
 @Scope("threadlocal")
 public class MouseAction {
 
-    @Autowired
-    private ElementSearcher elementsSearcher;
+    private final ElementSearcher elementsSearcher;
+    private final WebDriver driver;
 
     @Autowired
-    WebDriver driver;
+    public MouseAction(ElementSearcher elementsSearcher, WebDriver driver) {
+        this.elementsSearcher = elementsSearcher;
+        this.driver = driver;
+    }
 
     public void dragElementBy(String elementName, int xOffset, int yOffset) {
         WebElement sourceElement = elementsSearcher.findClickableElement(elementName);
