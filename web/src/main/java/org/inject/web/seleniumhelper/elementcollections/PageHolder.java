@@ -11,10 +11,14 @@ import java.util.Optional;
 @Scope("threadlocal")
 public class PageHolder {
 
-    @Autowired
-    private BeanFactory beanFactory;
+    private final BeanFactory beanFactory;
 
     private BasePage currentPage;
+
+    @Autowired
+    public PageHolder(BeanFactory beanFactory) {
+        this.beanFactory = beanFactory;
+    }
 
     public BasePage getCurrentPage() {
         return Optional.ofNullable(currentPage)

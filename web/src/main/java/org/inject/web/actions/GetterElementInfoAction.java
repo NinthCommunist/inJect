@@ -11,8 +11,12 @@ import java.util.Optional;
 @Scope("threadlocal")
 public class GetterElementInfoAction {
 
+    private final ElementSearcher elementsSearcher;
+
     @Autowired
-    ElementSearcher elementsSearcher;
+    public GetterElementInfoAction(ElementSearcher elementsSearcher) {
+        this.elementsSearcher = elementsSearcher;
+    }
 
     public String getElementText(String elementName){
         return elementsSearcher.findWebElement(elementName)

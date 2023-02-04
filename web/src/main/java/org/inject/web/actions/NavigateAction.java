@@ -9,8 +9,12 @@ import org.springframework.stereotype.Component;
 @Scope("threadlocal")
 public class NavigateAction {
 
+    private final WebDriver driver;
+
     @Autowired
-    WebDriver driver;
+    public NavigateAction(WebDriver driver) {
+        this.driver = driver;
+    }
 
     public void openUrl(String url) {
         driver.get(url);

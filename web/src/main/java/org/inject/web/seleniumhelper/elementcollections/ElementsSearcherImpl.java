@@ -15,11 +15,14 @@ import java.time.Duration;
 @Scope("threadlocal")
 public class ElementsSearcherImpl implements ElementSearcher {
 
-    @Autowired
-    private PageHolder pageHolder;
+    private final PageHolder pageHolder;
+    private final WebDriver driver;
 
     @Autowired
-    private WebDriver driver;
+    public ElementsSearcherImpl(PageHolder pageHolder, WebDriver driver) {
+        this.pageHolder = pageHolder;
+        this.driver = driver;
+    }
 
     public WebElement findWebElement(String elementName) {
         return driver.findElement(pageHolder.getCurrentPage()

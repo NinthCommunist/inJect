@@ -12,8 +12,12 @@ import org.springframework.stereotype.Component;
 @Scope("threadlocal")
 public class DropdownAction {
 
+    private final ElementSearcher elementsSearcher;
+
     @Autowired
-    ElementSearcher elementsSearcher;
+    public DropdownAction(ElementSearcher elementsSearcher) {
+        this.elementsSearcher = elementsSearcher;
+    }
 
     public void selectDropdownOption(String dropdownName, String optionText) {
         Select select = new Select(elementsSearcher.findWebElement(dropdownName));

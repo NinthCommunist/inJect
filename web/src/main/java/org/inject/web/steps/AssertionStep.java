@@ -12,7 +12,7 @@ import org.testng.Assert;
 public class AssertionStep {
 
     @Autowired
-    GetterElementInfoAction getterElementInfoAction;
+    private GetterElementInfoAction getterElementInfoAction;
 
     @Step("Проверка что у элемента {elementName} текст равен {text}")
     public AssertionStep elementTextIs(String elementName, String text) {

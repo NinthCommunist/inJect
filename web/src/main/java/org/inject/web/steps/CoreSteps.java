@@ -14,34 +14,34 @@ import java.util.List;
 @Scope("threadlocal")
 public class CoreSteps {
     @Autowired
-    WebProperties webProperties;
+    private WebProperties webProperties;
 
     @Autowired
-    PageHolder pageHolder;
+    private PageHolder pageHolder;
 
     @Autowired
-    ButtonAction buttonAction;
+    private ButtonAction buttonAction;
 
     @Autowired
-    NavigateAction navigateAction;
+    private NavigateAction navigateAction;
 
     @Autowired
-    FieldAction fieldAction;
+    private FieldAction fieldAction;
 
     @Autowired
-    DropdownAction dropdownAction;
+    private DropdownAction dropdownAction;
 
     @Autowired
-    FileAction fileAction;
+    private FileAction fileAction;
 
     @Autowired
-    MouseAction mouseAction;
+    private MouseAction mouseAction;
 
     @Autowired
-    WaiterAction waiterAction;
+    private WaiterAction waiterAction;
 
     @Autowired
-    AlertAction alertAction;
+    private AlertAction alertAction;
 
     @Step("Открыть главную страницу")
     public void openMainPage() {
