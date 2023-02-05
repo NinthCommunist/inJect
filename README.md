@@ -81,7 +81,7 @@ Web form, Slow Calculator, Dialog Boxes.
 <img src="images_for_readme/api/email_notification.png">
 
 
-## GRPC JDBCTemplate ПРОООООООТО
+## GRPC JDBCTemplate
 Сервис для тестирования собирается из докерфайла модуля.
 Полностью система собирается из ```docker-compose.yml``` модуля
 > ### Стэк
