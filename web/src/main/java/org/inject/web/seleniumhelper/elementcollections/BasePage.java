@@ -2,6 +2,7 @@ package org.inject.web.seleniumhelper.elementcollections;
 
 import org.inject.web.annotations.Name;
 import org.openqa.selenium.By;
+import org.springframework.util.ReflectionUtils;
 
 import javax.annotation.PostConstruct;
 import java.lang.reflect.Field;
@@ -34,11 +35,7 @@ public abstract class BasePage {
     }
 
     private By getFieldValue(Field field) {
-        field.setAccessible(true);
-        try {
-            return (By) field.get(this);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException("Ошибка при получении поля By");
-        }
+        ReflectionUtils.makeAccessible(field);
+        return (By) ReflectionUtils.getField(field, this);
     }
 }
