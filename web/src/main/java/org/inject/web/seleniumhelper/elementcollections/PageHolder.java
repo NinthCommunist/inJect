@@ -5,19 +5,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
 import java.util.Optional;
 
 @Component
 @Scope("threadlocal")
 public class PageHolder {
 
-    private final BeanFactory beanFactory;
-
+    private final Map<String, BasePage> pages;
     private BasePage currentPage;
 
     @Autowired
-    public PageHolder(BeanFactory beanFactory) {
-        this.beanFactory = beanFactory;
+    public PageHolder(Map<String, BasePage> pages) {
+        this.pages = pages;
     }
 
     public BasePage getCurrentPage() {
@@ -27,6 +27,6 @@ public class PageHolder {
     }
 
     public void setCurrentPage(String currentPage) {
-        this.currentPage = beanFactory.getBean(currentPage, BasePage.class);
+        this.currentPage = pages.get(currentPage);
     }
 }

@@ -7,7 +7,7 @@ import org.springframework.context.support.SimpleThreadScope;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BeanScopeThreadLocalPostProcessor implements BeanFactoryPostProcessor {
+public class ScopeThreadLocalAnnotationBeanPostProcessor implements BeanFactoryPostProcessor {
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         beanFactory.registerScope("threadlocal", new SimpleThreadScope());
