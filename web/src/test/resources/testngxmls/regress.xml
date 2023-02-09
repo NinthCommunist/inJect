@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Веб тесты" >
+<suite name="Веб тесты" parallel="classes" >
     <test  name="Регресс тесты">
         <classes>
             <class name="tests.WebFormTest" >
