@@ -15,7 +15,7 @@ import org.testng.annotations.BeforeMethod;
 
 @ContextConfiguration(classes = CoreConfig.class)
 @TestExecutionListeners(TestListener.class)
-@DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_CLASS)
 public abstract class BaseTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
