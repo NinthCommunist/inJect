@@ -1,10 +1,12 @@
 package org.inject.api.models.requests;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
 public class UserPojo {
 
+    @EqualsAndHashCode.Exclude
     private int id;
     private String username;
     private String firstName;

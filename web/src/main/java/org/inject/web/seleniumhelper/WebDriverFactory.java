@@ -6,34 +6,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 import java.util.Map;
 
-@Component
-@Scope("threadlocal")
-@EnableConfigurationProperties(WebProperties.class)
 public class WebDriverFactory {
 
-    private final WebProperties webProperties;
-
-    @Autowired
-    public WebDriverFactory(WebProperties webProperties) {
-        this.webProperties = webProperties;
+    public static WebDriver getWebDriver(WebProperties webProperties) {
+        return webProperties.isRemote() ? remoteDriver(webProperties) : localDriver(webProperties);
     }
 
-    @Bean
-    @Scope("threadlocal")
-    public WebDriver getWebDriver() {
-        return webProperties.isRemote() ? remoteDriver() : localDriver();
-    }
-
-    private WebDriver localDriver() {
+    private static WebDriver localDriver(WebProperties webProperties) {
         WebDriver driver;
         switch (webProperties.getBrowserName()) {
             case "chrome":
@@ -53,7 +36,7 @@ public class WebDriverFactory {
         return driver;
     }
 
-    private WebDriver remoteDriver() {
+    private static WebDriver remoteDriver(WebProperties webProperties) {
         WebDriver driver;
         ChromeOptions capabilities = new ChromeOptions();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
