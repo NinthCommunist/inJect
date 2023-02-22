@@ -3,15 +3,11 @@ package org.inject.web.testhelpers.testdata.generate;
 import net.datafaker.Faker;
 import org.inject.web.testhelpers.testdata.models.SlowCalculatorModel;
 import org.inject.web.testhelpers.testdata.models.WebFormModel;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 import java.nio.file.FileSystems;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
-@Scope("threadlocal")
 public class TestDataGenerator {
 
     private final Faker faker = new Faker();

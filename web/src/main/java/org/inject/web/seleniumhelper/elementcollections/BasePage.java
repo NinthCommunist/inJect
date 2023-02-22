@@ -1,6 +1,6 @@
 package org.inject.web.seleniumhelper.elementcollections;
 
-import org.inject.web.annotations.Name;
+import org.inject.web.seleniumhelper.elementcollections.annotations.Name;
 import org.openqa.selenium.By;
 import org.springframework.util.ReflectionUtils;
 

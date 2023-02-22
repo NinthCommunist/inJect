@@ -1,26 +1,24 @@
 package org.inject.web.actions;
 
-import org.openqa.selenium.WebDriver;
+import org.inject.web.seleniumhelper.WebDriverHolder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope("threadlocal")
 public class NavigateAction {
 
-    private final WebDriver driver;
+    private final WebDriverHolder webDriverHolder;
 
     @Autowired
-    public NavigateAction(WebDriver driver) {
-        this.driver = driver;
+    public NavigateAction(WebDriverHolder webDriverHolder) {
+        this.webDriverHolder = webDriverHolder;
     }
 
     public void openUrl(String url) {
-        driver.get(url);
+        webDriverHolder.getDriver().get(url);
     }
 
     public void quitBrowser() {
-        driver.quit();
+        webDriverHolder.getDriver().quit();
     }
 }

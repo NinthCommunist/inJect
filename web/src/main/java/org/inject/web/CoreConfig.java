@@ -2,6 +2,7 @@ package org.inject.web;
 
 import org.inject.web.properties.WebProperties;
 import org.inject.web.seleniumhelper.WebDriverFactory;
+import org.inject.web.seleniumhelper.WebDriverHolder;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -20,7 +21,19 @@ public class CoreConfig {
 
     @Bean
     @Scope("threadlocal")
-    public WebDriver webDriver(){
+    public WebDriver webDriver() {
         return WebDriverFactory.getWebDriver(webProperties);
     }
+
+    @Bean
+    public WebDriverHolder webDriverHolder() {
+        return new WebDriverHolder() {
+            @Override
+            public WebDriver getDriver() {
+                return webDriver();
+            }
+        };
+    }
+
+
 }

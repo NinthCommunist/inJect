@@ -1,29 +1,27 @@
 package org.inject.web.actions;
 
+import org.inject.web.seleniumhelper.WebDriverHolder;
 import org.inject.web.seleniumhelper.elementcollections.interfaces.ElementSearcher;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope("threadlocal")
 public class MouseAction {
 
     private final ElementSearcher elementsSearcher;
-    private final WebDriver driver;
+    private final WebDriverHolder webDriverHolder;
 
     @Autowired
-    public MouseAction(ElementSearcher elementsSearcher, WebDriver driver) {
+    public MouseAction(ElementSearcher elementsSearcher, WebDriverHolder webDriverHolder) {
         this.elementsSearcher = elementsSearcher;
-        this.driver = driver;
+        this.webDriverHolder = webDriverHolder;
     }
 
     public void dragElementBy(String elementName, int xOffset, int yOffset) {
         WebElement sourceElement = elementsSearcher.findClickableElement(elementName);
-        new Actions(driver)
+        new Actions(webDriverHolder.getDriver())
                 .dragAndDropBy(sourceElement, xOffset, yOffset)
                 .build().perform();
     }

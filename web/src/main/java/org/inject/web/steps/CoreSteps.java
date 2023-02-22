@@ -5,13 +5,11 @@ import org.inject.web.actions.*;
 import org.inject.web.properties.WebProperties;
 import org.inject.web.seleniumhelper.elementcollections.PageHolder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-@Scope("threadlocal")
 public class CoreSteps {
     @Autowired
     private WebProperties webProperties;
