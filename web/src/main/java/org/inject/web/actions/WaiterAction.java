@@ -1,33 +1,32 @@
 package org.inject.web.actions;
 
+import org.inject.web.seleniumhelper.WebDriverHolder;
 import org.inject.web.seleniumhelper.elementcollections.interfaces.ElementSearcher;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 
 @Component
-@Scope("threadlocal")
 public class WaiterAction {
 
     private final ElementSearcher elementsSearcher;
 
-    private final WebDriver driver;
+    private final WebDriverHolder webDriverHolder;
 
     @Autowired
-    public WaiterAction(ElementSearcher elementsSearcher, WebDriver driver) {
+    public WaiterAction(ElementSearcher elementsSearcher, WebDriverHolder webDriverHolder) {
         this.elementsSearcher = elementsSearcher;
-        this.driver = driver;
+        this.webDriverHolder = webDriverHolder;
     }
 
     public void waitElementText(String elementName, String text, int waitSecond) {
         WebElement element = elementsSearcher.findWebElement(elementName);
-        wait(driver, waitSecond)
+        wait(webDriverHolder.getDriver(), waitSecond)
                 .until(ExpectedConditions.textToBePresentInElement(element, text));
     }
 

@@ -1,28 +1,26 @@
 package org.inject.web.actions;
 
-import org.openqa.selenium.WebDriver;
+import org.inject.web.seleniumhelper.WebDriverHolder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope("threadlocal")
 public class AlertAction {
 
-    private final WebDriver driver;
+    private final WebDriverHolder webDriverHolder;
 
     @Autowired
-    public AlertAction(WebDriver driver) {
-        this.driver = driver;
+    public AlertAction(WebDriverHolder webDriverHolder) {
+        this.webDriverHolder = webDriverHolder;
     }
 
     public void acceptAlert() {
-        driver.switchTo().alert()
+        webDriverHolder.getDriver().switchTo().alert()
                 .accept();
     }
 
     public void fillAlert(String text) {
-        driver.switchTo().alert()
+        webDriverHolder.getDriver().switchTo().alert()
                 .sendKeys(text);
     }
 }

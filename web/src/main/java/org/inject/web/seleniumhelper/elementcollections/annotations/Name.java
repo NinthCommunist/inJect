@@ -1,4 +1,4 @@
-package org.inject.web.annotations;
+package org.inject.web.seleniumhelper.elementcollections.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

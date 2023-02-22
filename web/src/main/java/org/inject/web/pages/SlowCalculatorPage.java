@@ -1,6 +1,6 @@
 package org.inject.web.pages;
 
-import org.inject.web.annotations.Name;
+import org.inject.web.seleniumhelper.elementcollections.annotations.Name;
 import org.inject.web.seleniumhelper.elementcollections.BasePage;
 import org.openqa.selenium.By;
 import org.springframework.stereotype.Component;

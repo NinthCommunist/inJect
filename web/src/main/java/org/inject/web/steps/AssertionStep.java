@@ -3,12 +3,10 @@ package org.inject.web.steps;
 import io.qameta.allure.Step;
 import org.inject.web.actions.GetterElementInfoAction;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.testng.Assert;
 
 @Component
-@Scope("threadlocal")
 public class AssertionStep {
 
     @Autowired

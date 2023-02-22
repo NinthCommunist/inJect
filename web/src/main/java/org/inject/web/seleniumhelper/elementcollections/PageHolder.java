@@ -1,15 +1,15 @@
 package org.inject.web.seleniumhelper.elementcollections;
 
-import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.Optional;
 
 @Component
-@Scope("threadlocal")
+@Scope(value = "threadlocal", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class PageHolder {
 
     private final Map<String, BasePage> pages;

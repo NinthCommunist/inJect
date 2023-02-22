@@ -5,11 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope("threadlocal")
 public class DropdownAction {
 
     private final ElementSearcher elementsSearcher;
@@ -27,7 +25,7 @@ public class DropdownAction {
     public void fillDatalist(String datalistName, String text) {
         WebElement inputDatalist = elementsSearcher.findClickableElement(datalistName);
         WebElement optionDatalist = elementsSearcher.findClickableElement(datalistName)
-                .findElement(By.xpath(String.format("./..//option[@value = '%s']",text)));
+                .findElement(By.xpath(String.format("./..//option[@value = '%s']", text)));
         inputDatalist.sendKeys(optionDatalist.getAttribute("value"));
     }
 }

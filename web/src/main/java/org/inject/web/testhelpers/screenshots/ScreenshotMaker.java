@@ -2,9 +2,10 @@ package org.inject.web.testhelpers.screenshots;
 
 import io.qameta.allure.Attachment;
 import lombok.SneakyThrows;
-import org.openqa.selenium.WebDriver;
+import org.inject.web.seleniumhelper.WebDriverHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
@@ -14,13 +15,13 @@ import javax.imageio.ImageIO;
 import java.io.ByteArrayOutputStream;
 
 @Component
-@Scope("threadlocal")
+@Scope(value = "threadlocal", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class ScreenshotMaker {
 
-    private final WebDriver driver;
+    private final WebDriverHolder driver;
 
     @Autowired
-    public ScreenshotMaker(WebDriver driver) {
+    public ScreenshotMaker(WebDriverHolder driver) {
         this.driver = driver;
     }
 
@@ -29,7 +30,7 @@ public class ScreenshotMaker {
     public byte[] makeScreenshot() {
         Screenshot screenshot = new AShot()
                 .shootingStrategy(ShootingStrategies.viewportPasting(100))
-                .takeScreenshot(driver);
+                .takeScreenshot(driver.getDriver());
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
         ImageIO.write(screenshot.getImage(), "png", buffer);
         return buffer.toByteArray();
