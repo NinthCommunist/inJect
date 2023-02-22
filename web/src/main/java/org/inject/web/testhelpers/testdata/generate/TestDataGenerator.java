@@ -13,7 +13,7 @@ public class TestDataGenerator {
     private final Faker faker = new Faker();
 
     public WebFormModel generateWebFormModel() {
-        String uploadFileName = "\\UploadTestFile";
+        String uploadFileName = "/UploadTestFile";
         String datePattern = "MM/dd/YYYY";
         int minOffset = -150;
         int maxOffset = 150;
