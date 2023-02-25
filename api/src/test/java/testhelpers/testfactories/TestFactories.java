@@ -14,11 +14,11 @@ import java.util.List;
 
 public class TestFactories {
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private final Path testDataPath = FileSystems.getDefault().getPath("src/main/resources/testdata");
+    private final Path testDataPath = FileSystems.getDefault().getPath("src/test/resources/testdata");
 
     @Factory
     public Object[] userTestFactory() throws IOException {
-        Path usersPath = Path.of(testDataPath.toString(), "users");
+        Path usersPath = Path.of(testDataPath.toString(), "/users");
         List<String> roles = List.of("admin", "seller", "customer");
         Object[] result = new Object[roles.size()];
         for (String role :

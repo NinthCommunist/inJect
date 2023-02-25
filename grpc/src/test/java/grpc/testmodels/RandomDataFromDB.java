@@ -25,10 +25,10 @@ public class RandomDataFromDB {
     }
 
     public ArtistPicturesTestModel getArtistPictures(){
-        String artists=faker.options().nextElement(getAllArtist());
+        String artist=faker.options().nextElement(getAllArtist());
         return ArtistPicturesTestModel.builder()
-                .artist(artists)
-                .pictures(getPicturesByArtist(artists))
+                .artist(artist)
+                .pictures(getPicturesByArtist(artist))
                 .build();
     }
 
