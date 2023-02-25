@@ -47,10 +47,10 @@ public class WebDriverFactory {
                 driver = WebDriverManager.chromedriver().remoteAddress(webProperties.getSelenoidUrl()).capabilities(capabilities).create();
                 break;
             case "firefox":
-                driver = WebDriverManager.firefoxdriver().remoteAddress(webProperties.getSelenoidUrl()).create();
+                driver = WebDriverManager.firefoxdriver().remoteAddress(webProperties.getSelenoidUrl()).capabilities(capabilities).create();
                 break;
             case "edge":
-                driver = WebDriverManager.edgedriver().remoteAddress(webProperties.getSelenoidUrl()).create();
+                driver = WebDriverManager.edgedriver().remoteAddress(webProperties.getSelenoidUrl()).capabilities(capabilities).create();
                 break;
             default:
                 throw new IllegalArgumentException("Неверно указан браузер: " + webProperties.getBrowserName());
